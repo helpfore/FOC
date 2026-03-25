@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOC 3161005 — Complete 8-Page Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c18;--sur:#0f1520;--sur2:#141e2e;--brd:#1e3358;--a1:#00d4ff;--a2:#ff6b35;--a3:#a78bfa;--a4:#10b981;--a5:#f59e0b;--a6:#ec4899;--a7:#3b82f6;--a8:#f87171;--tx:#dde4f0;--dim:#7a8fb0;--br:#f0f6ff;--mn:'JetBrains Mono',monospace;--hd:'Syne',sans-serif;--bd:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--tx);font-family:var(--bd);font-size:11px;line-height:1.5;padding:14px}
+.page{max-width:1140px;margin:0 auto 28px;background:var(--sur);border:1px solid var(--brd);border-radius:10px;overflow:hidden}
+.ph{background:linear-gradient(120deg,#06090f 0%,#0d1a35 60%,#070d1a 100%);border-bottom:2px solid var(--a1);padding:13px 20px 10px;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;top:-60%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,212,255,.05) 0%,transparent 65%);pointer-events:none}
+.ph .ti{font-family:var(--hd);font-size:19px;font-weight:800;color:var(--a1);letter-spacing:-.5px}
+.ph .co{font-family:var(--mn);font-size:10px;color:var(--a2);background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);padding:2px 7px;border-radius:4px}
+.ph .cp{font-family:var(--hd);font-size:12px;font-weight:700;color:var(--a3);margin-left:4px}
+.ph .pg{margin-left:auto;font-family:var(--mn);font-size:9.5px;color:var(--dim)}
+.pb{padding:12px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.pb.g2{grid-template-columns:repeat(2,1fr)}
+.pb.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--sur2);border:1px solid var(--brd);border-radius:7px;overflow:hidden}
+.card.s2{grid-column:span 2}.card.s3{grid-column:span 3}.card.s4{grid-column:span 4}
+.ch{padding:5px 9px 4px;font-family:var(--hd);font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.ch .d{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.c1 .ch{background:rgba(0,212,255,.09);color:var(--a1);border-bottom:1px solid rgba(0,212,255,.18)}.c1 .ch .d{background:var(--a1)}
+.c2 .ch{background:rgba(255,107,53,.09);color:var(--a2);border-bottom:1px solid rgba(255,107,53,.18)}.c2 .ch .d{background:var(--a2)}
+.c3 .ch{background:rgba(167,139,250,.09);color:var(--a3);border-bottom:1px solid rgba(167,139,250,.18)}.c3 .ch .d{background:var(--a3)}
+.c4 .ch{background:rgba(16,185,129,.09);color:var(--a4);border-bottom:1px solid rgba(16,185,129,.18)}.c4 .ch .d{background:var(--a4)}
+.c5 .ch{background:rgba(245,158,11,.09);color:var(--a5);border-bottom:1px solid rgba(245,158,11,.18)}.c5 .ch .d{background:var(--a5)}
+.c6 .ch{background:rgba(236,72,153,.09);color:var(--a6);border-bottom:1px solid rgba(236,72,153,.18)}.c6 .ch .d{background:var(--a6)}
+.c7 .ch{background:rgba(59,130,246,.09);color:var(--a7);border-bottom:1px solid rgba(59,130,246,.18)}.c7 .ch .d{background:var(--a7)}
+.c8 .ch{background:rgba(248,113,113,.09);color:var(--a8);border-bottom:1px solid rgba(248,113,113,.18)}.c8 .ch .d{background:var(--a8)}
+.cb{padding:6px 9px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:1.5px 0;border-bottom:1px solid rgba(255,255,255,.04);gap:6px}
+.kv:last-child{border-bottom:none}
+.kv .k{color:var(--dim);font-size:10.5px;flex-shrink:0}
+.kv .v{color:var(--br);font-family:var(--mn);font-size:10px;text-align:right}
+.f{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:3px 7px;font-family:var(--mn);font-size:10.5px;color:var(--a1);margin:2px 0;text-align:center}
+.f.o{color:var(--a2)}.f.g{color:var(--a4)}.f.y{color:var(--a5)}.f.p{color:var(--a3)}.f.pk{color:var(--a6)}.f.b{color:var(--a7)}.f.r{color:var(--a8)}
+ul.li{list-style:none;padding:0}
+ul.li li{padding:2px 0 2px 11px;position:relative;font-size:10.5px;color:var(--tx);border-bottom:1px solid rgba(255,255,255,.03)}
+ul.li li:last-child{border-bottom:none}
+ul.li li::before{content:'›';position:absolute;left:0;color:var(--dim)}
+ul.li li strong{color:var(--br)}
+ul.li li em{color:var(--a5);font-style:normal}
+table.t{width:100%;border-collapse:collapse;font-size:10px}
+table.t th{background:rgba(0,0,0,.3);color:var(--dim);font-family:var(--mn);font-size:9px;padding:3px 5px;text-align:left;letter-spacing:.4px;text-transform:uppercase}
+table.t td{padding:2px 5px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--tx);vertical-align:top}
+table.t td:first-child{color:var(--a1);font-family:var(--mn);font-size:9.5px}
+table.t tr:last-child td{border-bottom:none}
+.cb2{font-family:var(--mn);font-size:8.5px;color:var(--a4);background:rgba(0,0,0,.3);border-radius:4px;padding:5px 7px;line-height:1.7;white-space:pre;overflow:hidden}
+.dv{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:3px 0 1px}
+.dv span{font-family:var(--hd);font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.dv::after{content:'';flex:1;height:1px;background:var(--brd)}
+.g2x{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.g3x{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+p.d{font-size:10.5px;color:var(--tx);line-height:1.5;margin-bottom:3px}
+.nt{font-size:9.5px;color:var(--dim);font-style:italic;padding:2px 0}
+.tag{display:inline-block;font-family:var(--mn);font-size:9px;padding:1px 5px;border-radius:3px;margin:1px 2px 1px 0;font-weight:700}
+.tag.b{background:var(--a1);color:#000}.tag.o{background:var(--a2);color:#000}.tag.g{background:var(--a4);color:#000}
+.tag.y{background:var(--a5);color:#000}.tag.p{background:var(--a3);color:#fff}.tag.pk{background:var(--a6);color:#fff}
+</style></head><body>
+
+<!-- PAGE 1: CHAPTER 1 -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 1 — Overview of OFC</div><div class="pg">1/8</div></div>
+<div class="pb">
+<div class="card c1"><div class="ch"><div class="d"></div>EM Spectrum & Optical Bands</div><div class="cb">
+<table class="t"><tr><th>Region</th><th>λ Range</th><th>OFC Use</th></tr>
+<tr><td>UV</td><td>10–400 nm</td><td>No (high loss)</td></tr>
+<tr><td>Visible</td><td>400–700 nm</td><td>POF, sensors</td></tr>
+<tr><td>Near-IR</td><td>700–3000 nm</td><td>✓ OFC region</td></tr></table>
+<div style="margin-top:4px">
+<div class="kv"><span class="k">O-band</span><span class="v">1260–1360 nm</span></div>
+<div class="kv"><span class="k">E-band</span><span class="v">1360–1460 nm</span></div>
+<div class="kv"><span class="k">S-band</span><span class="v">1460–1530 nm (Raman)</span></div>
+<div class="kv"><span class="k">C-band</span><span class="v">1530–1565 nm ← EDFA</span></div>
+<div class="kv"><span class="k">L-band</span><span class="v">1565–1625 nm ← EDFA+</span></div>
+</div></div></div>
+
+<div class="card c2"><div class="ch"><div class="d"></div>3 Transmission Windows</div><div class="cb">
+<table class="t"><tr><th>Win</th><th>λ</th><th>Loss</th><th>Feature</th></tr>
+<tr><td>1st</td><td>850 nm</td><td>2–4 dB/km</td><td>LAN, short dist.</td></tr>
+<tr><td>2nd</td><td>1300 nm</td><td>0.4 dB/km</td><td>Zero material disp.</td></tr>
+<tr><td>3rd</td><td>1550 nm</td><td>0.2 dB/km</td><td>Min. loss + EDFA</td></tr></table>
+<div class="nt" style="margin-top:3px">OH⁻ peaks: 950, 1240, 1380 nm (water absorption)</div>
+<div class="f" style="margin-top:4px">E(eV) = 1.24/λ(µm) | f = c/λ</div>
+<div class="kv"><span class="k">λ=1.3µm</span><span class="v">2.307×10¹⁴ Hz, 0.956 eV</span></div>
+<div class="kv"><span class="k">λ=1.5µm</span><span class="v">2.0×10¹⁴ Hz, 0.828 eV</span></div>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>Advantages: Fiber vs Copper</div><div class="cb">
+<table class="t"><tr><th>Parameter</th><th>Fiber</th><th>Copper</th></tr>
+<tr><td>Bandwidth</td><td>THz</td><td>MHz</td></tr>
+<tr><td>Attenuation</td><td>0.2 dB/km</td><td>~10 dB/km</td></tr>
+<tr><td>Repeater spacing</td><td>~100 km</td><td>~2 km</td></tr>
+<tr><td>Weight</td><td>Light,thin</td><td>Heavy</td></tr>
+<tr><td>EMI</td><td>Immune</td><td>Susceptible</td></tr>
+<tr><td>Crosstalk</td><td>Negligible</td><td>Significant</td></tr>
+<tr><td>Security</td><td>No radiation</td><td>Easy to tap</td></tr>
+<tr><td>Safety</td><td>Dielectric</td><td>Electric hazard</td></tr>
+<tr><td>Material</td><td>Silica (cheap)</td><td>Copper (costly)</td></tr></table>
+</div></div>
+
+<div class="card c1 s3"><div class="ch"><div class="d"></div>OFC System Block Diagram</div><div class="cb">
+<div class="cb2">Src → Input Transducer → Encoder/Modulator → [LED/Laser] → Coupler ══[OPTICAL FIBER]══ Coupler → [PIN/APD] → Amp/Demod → Output Transducer → Dest</div>
+<div class="g3x" style="margin-top:5px">
+<ul class="li"><li><strong>Input Transducer:</strong> Signal→electrical</li><li><strong>Encoder:</strong> FEC / error correction</li><li><strong>Modulator:</strong> IM-DD or coherent</li></ul>
+<ul class="li"><li><strong>LED/Laser:</strong> E→O conversion</li><li><strong>Coupler:</strong> Efficiently couples light</li><li><strong>Optical Fiber:</strong> Low-loss medium</li></ul>
+<ul class="li"><li><strong>PIN/APD:</strong> O→E conversion</li><li><strong>Amplifier:</strong> Boosts signal</li><li><strong>Decoder:</strong> Recovers data</li></ul>
+</div></div></div>
+
+<div class="card c5"><div class="ch"><div class="d"></div>Multiplexing Techniques</div><div class="cb">
+<ul class="li">
+<li><strong>TDM:</strong> Signals share time slots on single channel; each user gets periodic slot; used in SONET/SDH</li>
+<li><strong>FDM:</strong> Different carrier frequencies per signal; analog systems, CATV, RF-over-fiber</li>
+<li><strong>WDM:</strong> Different λ channels on one fiber; optical FDM; 4–160+ channels</li>
+<li><strong>DWDM:</strong> Dense WDM; 100GHz/50GHz spacing; C+L band; EDFA amplified</li>
+<li><strong>OTDM:</strong> All-optical TDM; ultra-short pulses; Tbps systems</li>
+<li><strong>OCDMA:</strong> Orthogonal codes; multiple access in fiber LAN</li>
+</ul>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>WDM Concepts & Applications</div><div class="cb">
+<ul class="li">
+<li><strong>MUX:</strong> Combines λ₁,λ₂..λN at TX side</li>
+<li><strong>DEMUX:</strong> Separates λ channels at RX side</li>
+<li><strong>OADM:</strong> Optical Add-Drop Mux; insert/extract one λ at node without O/E/O</li>
+<li><strong>OXC:</strong> Optical cross-connect; route λ between fibers</li>
+</ul>
+<div class="kv" style="margin-top:4px"><span class="k">CWDM spacing</span><span class="v">20 nm (1270–1610nm)</span></div>
+<div class="kv"><span class="k">DWDM spacing</span><span class="v">0.8nm/100GHz; ref 193.1THz</span></div>
+<div class="kv"><span class="k">Applications</span><span class="v">Telecom, LAN, CATV, FTTH, Medical, Military</span></div>
+<div class="f" style="margin-top:4px">α(dB/km) = (10/L)·log₁₀(Pᵢₙ/Pₒᵤₜ)</div>
+<div class="f o">Pₒᵤₜ = Pᵢₙ / 10^(αL/10)</div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 2: CHAPTER 2 Part A -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 2A — Waveguiding, NA & Mode Theory</div><div class="pg">2/8</div></div>
+<div class="pb">
+
+<div class="card c2"><div class="ch"><div class="d"></div>Optical Laws & Definitions</div><div class="cb">
+<div class="f">Snell's Law: n₁ sin θ₁ = n₂ sin θ₂</div>
+<div class="kv"><span class="k">Refractive index n</span><span class="v">c/v (silica: 1.48–1.50)</span></div>
+<div class="kv"><span class="k">Critical angle θc</span><span class="v">sin θc = n₂/n₁</span></div>
+<div class="kv"><span class="k">TIR condition</span><span class="v">n₁ > n₂ AND θ ≥ θc</span></div>
+<div class="kv"><span class="k">Index difference Δ</span><span class="v">(n₁−n₂)/n₁</span></div>
+<div class="kv"><span class="k">Typical Δ</span><span class="v">0.01–0.03 (1–3%)</span></div>
+<div class="kv"><span class="k">Meridional ray</span><span class="v">Passes through fiber axis; zigzag</span></div>
+<div class="kv"><span class="k">Skew ray</span><span class="v">Helical path; NA_skew = NA/cos γ</span></div>
+</div></div>
+
+<div class="card c1"><div class="ch"><div class="d"></div>NA Derivation — Step Index</div><div class="cb">
+<p class="d">Ray enters end face at θₐ; TIR must occur at core-cladding interface:</p>
+<div class="f">① n₀ sin θₐ = n₁ sin θ₁ (end face, n₀=1)</div>
+<div class="f">② n₁ sin θc = n₂ → TIR condition</div>
+<div class="f">③ θ₁ = 90°−θc → sin θ₁ = cos θc</div>
+<div class="f">④ cos θc = √(1−n₂²/n₁²)</div>
+<div class="f o">∴ NA = sin θₐ = √(n₁²−n₂²)</div>
+<div class="f g">NA = n₁√(2Δ) [since Δ≈(n₁²−n₂²)/2n₁²]</div>
+<div class="f p">V = (2πa/λ)·NA = (πd/λ)·NA</div>
+<div class="kv" style="margin-top:3px"><span class="k">SM condition</span><span class="v">V &lt; 2.405</span></div>
+<div class="kv"><span class="k">MM-SI modes M</span><span class="v">≈ V²/2</span></div>
+<div class="kv"><span class="k">MM-GI modes M</span><span class="v">≈ V²/4</span></div>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>Graded Index Fiber — NA & Profile</div><div class="cb">
+<p class="d">Power-law refractive index profile:</p>
+<div class="f">n(r) = n₁[1−2Δ(r/a)^α]^½  (r ≤ a)</div>
+<div class="f o">n(r) = n₂  (r > a)</div>
+<div class="kv" style="margin-top:3px"><span class="k">α = ∞</span><span class="v">Step Index fiber</span></div>
+<div class="kv"><span class="k">α = 2</span><span class="v">Parabolic — optimal for GI</span></div>
+<div class="kv"><span class="k">α = 1</span><span class="v">Triangular profile</span></div>
+<div class="f g">NA(r) = NA(0)·[1−(r/a)^α]^½</div>
+<div class="f">NA(0) = n₁√(2Δ)  [max axial NA]</div>
+<div class="kv" style="margin-top:3px"><span class="k">Ray path in GI</span><span class="v">Sinusoidal / self-focusing</span></div>
+<div class="kv"><span class="k">Lower intermodal</span><span class="v">High-order modes travel faster in cladding</span></div>
+</div></div>
+
+<div class="card c3 s2"><div class="ch"><div class="d"></div>Electromagnetic Mode Theory & LP Modes</div><div class="cb">
+<div class="g2x">
+<div>
+<p class="d"><strong>EM Modes in Fiber:</strong></p>
+<ul class="li">
+<li><strong>TE modes:</strong> Ez=0; transverse electric field only</li>
+<li><strong>TM modes:</strong> Hz=0; transverse magnetic field only</li>
+<li><strong>HE modes:</strong> Hybrid; dominant mode = HE₁₁ (no cutoff)</li>
+<li><strong>EH modes:</strong> Hybrid; Hz dominates over Ez</li>
+</ul>
+<div class="f" style="margin-top:4px">β = (2π/λ)·n_eff [propagation constant]</div>
+<div class="kv"><span class="k">Guided mode condition</span><span class="v">n₂k &lt; β &lt; n₁k</span></div>
+<div class="kv"><span class="k">Mode field dia (SM)</span><span class="v">9–10 µm (2×spot size w)</span></div>
+</div>
+<div>
+<p class="d"><strong>Linearly Polarized (LP) Modes:</strong></p>
+<ul class="li">
+<li>Weakly guiding (n₁≈n₂): TE+TM+HE grouped as LP modes</li>
+<li><strong>LP₀₁ ≡ HE₁₁</strong> — fundamental, no cutoff</li>
+<li><strong>LP₁₁ ≡ TE₀₁+TM₀₁+HE₂₁</strong> — cutoff at V=2.405</li>
+<li>LP_lm cutoff: J_{l-1}(Vc)=0</li>
+<li>Each LP mode has 2 polarization states (degenerate)</li>
+</ul>
+<div class="f p" style="margin-top:4px">SM: only LP₀₁(HE₁₁) propagates when V &lt; 2.405</div>
+<div class="kv"><span class="k">Cutoff λc</span><span class="v">λc = 2πa·NA / 2.405</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c5"><div class="ch"><div class="d"></div>Fiber Types Comparison</div><div class="cb">
+<table class="t">
+<tr><th>Type</th><th>Core</th><th>Clad</th><th>V</th><th>Modes</th><th>BW</th><th>Application</th></tr>
+<tr><td>MM-SI</td><td>50–100µm</td><td>125µm</td><td>>2.405</td><td>V²/2</td><td>Low</td><td>Short dist.</td></tr>
+<tr><td>MM-GI</td><td>50–62.5µm</td><td>125µm</td><td>>2.405</td><td>V²/4</td><td>Medium</td><td>LAN/MAN</td></tr>
+<tr><td>SM</td><td>8–10µm</td><td>125µm</td><td>&lt;2.405</td><td>1 (HE₁₁)</td><td>Very high</td><td>Long haul</td></tr>
+</table>
+<div class="cb2" style="margin-top:5px">MM-SI:  ──/──\──/──\──  (zigzag meridional)
+MM-GI:  ──╭──╮──╭──╮──  (sinusoidal, self-focusing)
+SM:     ──────────────  (one mode, straight)</div>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>Numerical Example</div><div class="cb">
+<p class="d">Given: n₁=1.50, n₂=1.46, d=50µm, λ=1.3µm</p>
+<div class="kv"><span class="k">Δ=(n₁−n₂)/n₁</span><span class="v">0.04/1.50 = 0.0267</span></div>
+<div class="kv"><span class="k">NA=√(n₁²−n₂²)</span><span class="v">√(2.25−2.1316) = 0.344</span></div>
+<div class="kv"><span class="k">θₐ = sin⁻¹(NA)</span><span class="v">20.1°</span></div>
+<div class="kv"><span class="k">θc = sin⁻¹(n₂/n₁)</span><span class="v">76.7°</span></div>
+<div class="kv"><span class="k">V = πdNA/λ</span><span class="v">π×50e-6×0.344/1.3e-6 = 41.5</span></div>
+<div class="kv"><span class="k">M_SI = V²/2</span><span class="v">41.5²/2 ≈ 861 modes</span></div>
+<div class="kv"><span class="k">M_GI = V²/4</span><span class="v">≈ 430 modes</span></div>
+<div class="nt">V=41.5 >> 2.405 → highly multimode</div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 3: CHAPTER 2 Part B -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 2B — Fabrication, Materials & Cables</div><div class="pg">3/8</div></div>
+<div class="pb">
+
+<div class="card c1"><div class="ch"><div class="d"></div>Fiber Materials</div><div class="cb">
+<p class="d"><strong>Silica (SiO₂) Glass — Most Common:</strong></p>
+<table class="t">
+<tr><th>Dopant</th><th>Effect on n</th><th>Use</th></tr>
+<tr><td>GeO₂</td><td>Increases n</td><td>Core dopant</td></tr>
+<tr><td>P₂O₅</td><td>Increases n slightly</td><td>Core dopant</td></tr>
+<tr><td>B₂O₃</td><td>Decreases n</td><td>Cladding dopant</td></tr>
+<tr><td>Fluorine (F)</td><td>Decreases n</td><td>Cladding dopant</td></tr>
+</table>
+<p class="d" style="margin-top:4px"><strong>Other Fiber Types:</strong></p>
+<ul class="li">
+<li><strong>PCS:</strong> Plastic-clad silica; silica core + polymer clad; lower quality</li>
+<li><strong>POF:</strong> All-plastic (PMMA); high NA; ~100 dB/km; decorative, sensors</li>
+<li><strong>Fluoride glass:</strong> Theoretical loss 0.01 dB/km; mid-IR; fragile</li>
+<li><strong>Chalcogenide:</strong> Far-IR; chemical sensing; special apps</li>
+</ul>
+</div></div>
+
+<div class="card c2"><div class="ch"><div class="d"></div>MCVD — Modified CVD</div><div class="cb">
+<div class="cb2">Process:
+1. Reactant gases (SiCl₄+GeCl₄+O₂) flow INSIDE rotating silica tube
+2. External oxyhydrogen torch (1500°C) traverses tube
+3. Oxidation: SiCl₄ + O₂ → SiO₂ + 2Cl₂ (inside wall)
+4. Glassy soot layers deposited → vitrified layer by layer
+5. Tube COLLAPSED into solid preform at higher temp
+6. Preform fed to drawing tower → fiber drawn</div>
+<div class="kv" style="margin-top:4px"><span class="k">Advantages</span><span class="v">High purity, excellent index profile control</span></div>
+<div class="kv"><span class="k">Disadvantages</span><span class="v">Slow rate, small preform, substrate tube waste</span></div>
+<div class="kv"><span class="k">Index control</span><span class="v">GeCl₄ ratio controls n of each layer</span></div>
+</div></div>
+
+<div class="card c3"><div class="ch"><div class="d"></div>PCVD & OVD/VAD Methods</div><div class="cb">
+<p class="d"><strong>PCVD (Plasma CVD):</strong></p>
+<ul class="li">
+<li>Microwave plasma (~2.45 GHz) inside tube; no external torch</li>
+<li>Low pressure → direct vitrification; no soot; very thin layers (1–10 µm)</li>
+<li>Precise profile; ~100% deposition efficiency</li>
+<li>Disadvantage: Expensive microwave equipment</li>
+</ul>
+<p class="d" style="margin-top:4px"><strong>OVD (Outside Vapour Deposition):</strong></p>
+<ul class="li">
+<li>Soot deposited on outside of rotating mandrel (flame hydrolysis)</li>
+<li>Mandrel removed → porous preform sintered; large preforms possible</li>
+</ul>
+<p class="d" style="margin-top:3px"><strong>VAD (Vapour Axial Deposition):</strong></p>
+<ul class="li">
+<li>Soot deposited axially at bottom of growing preform; continuous process</li>
+</ul>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>Double Crucible & Drawing Tower</div><div class="cb">
+<div class="cb2">DOUBLE CRUCIBLE:
+ [Inner crucible] → Core glass melt (higher n₁)
+ [Outer crucible] → Cladding glass melt (lower n₂)
+         ↓ Concentric nozzle
+    Fiber drawn continuously from melt
+For multicomponent glass (non-silica) fibers</div>
+<div class="kv" style="margin-top:3px"><span class="k">Advantage</span><span class="v">Continuous, simple, lower cost</span></div>
+<div class="kv"><span class="k">Disadvantage</span><span class="v">Contamination risk, less precise n</span></div>
+<div class="cb2" style="margin-top:4px">DRAWING TOWER:
+ Preform → Furnace(2000°C) → Neck-down
+ → Laser diameter gauge (feedback control)
+ → UV-curable acrylate coating applicator
+ → UV curing oven → Capstan → Spool
+ (draw speed: 1–5 m/s)</div>
+</div></div>
+
+<div class="card c5 s2"><div class="ch"><div class="d"></div>Fiber Mechanical Properties & Cables</div><div class="cb">
+<div class="g2x">
+<div>
+<p class="d"><strong>Mechanical Properties:</strong></p>
+<ul class="li">
+<li><strong>Tensile strength:</strong> Pure silica ~3.5–7 GPa (very strong for diameter)</li>
+<li><strong>Proof testing:</strong> All fibers tested at ~1% strain before shipping</li>
+<li><strong>Fatigue:</strong> Static fatigue due to stress corrosion in presence of moisture</li>
+<li><strong>Min bend radius:</strong> ~25–30 mm for standard SM fiber</li>
+<li><strong>Coatings:</strong> Primary (soft) + Secondary (hard) acrylate layers protect from moisture and abrasion</li>
+</ul>
+</div>
+<div>
+<p class="d"><strong>Fiber Optic Cable Structures:</strong></p>
+<ul class="li">
+<li><strong>Tight-buffer:</strong> Coating directly on fiber (900µm); indoor use</li>
+<li><strong>Loose-tube:</strong> Fibers in gel-filled tube; outdoor, long haul</li>
+<li><strong>Ribbon cable:</strong> Multiple fibers in flat ribbon; high density splicing</li>
+<li><strong>Armored cable:</strong> Steel or aluminum armor; direct burial</li>
+<li><strong>Aerial cable:</strong> Self-supporting with steel messenger wire</li>
+<li><strong>Submarine cable:</strong> Heavy armoring + water-blocking; DWDM</li>
+</ul>
+<div class="kv" style="margin-top:3px"><span class="k">Buffer coating</span><span class="v">250µm (bare) → 900µm</span></div>
+<div class="kv"><span class="k">Standard cable OD</span><span class="v">2–22 mm depending on type</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>Fabrication Comparison</div><div class="cb">
+<table class="t">
+<tr><th>Method</th><th>Type</th><th>Preform Size</th><th>Purity</th><th>Rate</th></tr>
+<tr><td>MCVD</td><td>Inside dep.</td><td>Small</td><td>Very high</td><td>Slow</td></tr>
+<tr><td>PCVD</td><td>Inside dep.</td><td>Small</td><td>Very high</td><td>Slow</td></tr>
+<tr><td>OVD</td><td>Outside dep.</td><td>Large</td><td>High</td><td>Medium</td></tr>
+<tr><td>VAD</td><td>Axial dep.</td><td>Very large</td><td>High</td><td>Fast</td></tr>
+<tr><td>Double Crucible</td><td>Melt draw</td><td>Continuous</td><td>Medium</td><td>Fast</td></tr>
+</table>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 4: CHAPTER 3 -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 3 — Signal Degradation in Optical Fibers</div><div class="pg">4/8</div></div>
+<div class="pb">
+
+<div class="card c2 s3"><div class="ch"><div class="d"></div>Attenuation — Types & Mechanisms</div><div class="cb">
+<div class="g3x">
+<div>
+<p class="d"><strong>Absorption Loss:</strong></p>
+<ul class="li">
+<li><strong>Intrinsic UV:</strong> Electronic transitions in silica; dominant at &lt;1µm</li>
+<li><strong>Intrinsic IR:</strong> Molecular vibrations; tail extends to 1550nm region</li>
+<li><strong>Extrinsic — Metal ions:</strong> Fe, Cu, Mn even at ppb cause significant loss</li>
+<li><strong>Extrinsic — OH⁻:</strong> Absorption peaks at 950, 1240, 1380nm; "dry fiber" &lt;1ppb OH</li>
+</ul>
+</div>
+<div>
+<p class="d"><strong>Scattering Loss:</strong></p>
+<ul class="li">
+<li><strong>Rayleigh scattering:</strong> Microscopic density fluctuations (frozen during manufacture); loss ∝ 1/λ⁴; sets 0.2dB/km floor at 1550nm</li>
+<li><strong>Mie scattering:</strong> Inhomogeneities ≈ λ size; imperfections in core; less wavelength dependent</li>
+<li><strong>Brillouin/Raman:</strong> Nonlinear scattering at high power</li>
+</ul>
+</div>
+<div>
+<p class="d"><strong>Bending (Radiative) Loss:</strong></p>
+<ul class="li">
+<li><strong>Macrobend:</strong> Large radius bend; outer field must travel faster → radiates; exponential increase as R decreases; min R≈25–30mm</li>
+<li><strong>Microbend:</strong> Tiny random bends (manufacturing, cabling pressure); couples guided→radiation modes; reduced by proper buffering/jacketing</li>
+</ul>
+<div class="f o" style="margin-top:4px">α(dB/km) = (10/L)·log₁₀(Pᵢₙ/Pₒᵤₜ)</div>
+<div class="f g">Pₒᵤₜ = Pᵢₙ · 10^(−αL/10)</div>
+</div>
+</div>
+</div></div>
+
+<div class="card c1 s2"><div class="ch"><div class="d"></div>Dispersion Types & Formulas</div><div class="cb">
+<div class="g2x">
+<div>
+<p class="d"><strong>Material Dispersion:</strong> n varies with λ; different λ components travel at different speeds</p>
+<div class="f">σₘ = |Dₘ| · Δλ · L  (ps)</div>
+<div class="kv"><span class="k">Dₘ = 0</span><span class="v">at λ ≈ 1.27µm (silica)</span></div>
+<div class="kv"><span class="k">Dₘ @ 1550nm</span><span class="v">+17 ps/nm·km</span></div>
+
+<p class="d" style="margin-top:4px"><strong>Waveguide Dispersion:</strong> Mode field distribution shifts between core/clad with λ; always negative Dw</p>
+<div class="f o">D = Dₘ + Dw  [total chromatic, ps/nm·km]</div>
+</div>
+<div>
+<p class="d"><strong>Intermodal Dispersion (MM only):</strong> Different modes take different path lengths → arrive at different times</p>
+<div class="f">δT = (n₁·L·Δ)/c  [SI fiber delay]</div>
+<div class="f g">σ_rms = δT/(2√3)  [RMS pulse spread]</div>
+<div class="kv" style="margin-top:2px"><span class="k">GI fiber delay (α=2)</span><span class="v">δT_GI = (n₁LΔ²)/(2c) ≪ SI</span></div>
+
+<p class="d" style="margin-top:4px"><strong>PMD:</strong> Two orthogonal polarizations of HE₁₁ travel at different speeds due to fiber asymmetry</p>
+<div class="f p">PMD = |τₓ − τᵧ| ps/√km</div>
+<div class="kv"><span class="k">Critical for</span><span class="v">10+ Gbps systems</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>Dispersion-Shifted & Flattened Fibers</div><div class="cb">
+<div class="kv"><span class="k">Standard SMF</span><span class="v">Zero D @ 1300nm; min loss @ 1550nm</span></div>
+<div class="kv"><span class="k">DSF (G.653)</span><span class="v">Zero D shifted to 1550nm; triangular profile</span></div>
+<div class="kv"><span class="k">NZ-DSF (G.655)</span><span class="v">Small +/- D at 1550nm; avoids FWM in WDM</span></div>
+<div class="kv"><span class="k">DFF</span><span class="v">D flat ~0 over 1300–1600nm; W-profile</span></div>
+<div class="kv"><span class="k">DFF use</span><span class="v">Ideal for WDM; Dₘ+Dw≈const</span></div>
+<div class="cb2" style="margin-top:4px; font-size:8px">D(ps/nm·km)
+ +17 ─ Standard SMF ─────────────────╮
+   0 ───────╮────────────────────── DSF╯
+  -ve─       ╰──DFF (flat near zero) ─
+             1300       1550nm</div>
+</div></div>
+
+<div class="card c3"><div class="ch"><div class="d"></div>Pulse Broadening in GI Fiber</div><div class="cb">
+<p class="d">For optimal α=2 (parabolic), intermodal delay in GI is much reduced vs SI:</p>
+<div class="f">δT_SI = n₁·L·Δ/c</div>
+<div class="f o">δT_GI = n₁·L·Δ²/(2c) [α=2]</div>
+<p class="d" style="margin-top:3px">Ratio: δT_GI/δT_SI = Δ/2 ≈ 0.01 → 100× less delay!</p>
+<div class="kv" style="margin-top:2px"><span class="k">GI bandwidth</span><span class="v">~500× higher than MM-SI</span></div>
+<div class="f g" style="margin-top:3px">Total pulse spread: σ_tot = √(σ_modal² + σ_chromatic²)</div>
+<div class="kv"><span class="k">Mode coupling</span><span class="v">Power exchange between modes; reduces spread as σ∝√L</span></div>
+</div></div>
+
+<div class="card c5"><div class="ch"><div class="d"></div>SM Fiber Characteristics & ITU Standards</div><div class="cb">
+<table class="t">
+<tr><th>ITU-T</th><th>Type</th><th>Key Feature</th></tr>
+<tr><td>G.652</td><td>Standard SMF</td><td>Zero disp. @ 1310nm; most widely used</td></tr>
+<tr><td>G.653</td><td>DSF</td><td>Zero disp. @ 1550nm</td></tr>
+<tr><td>G.654</td><td>Low-loss SMF</td><td>Cutoff-shifted; ultralow loss</td></tr>
+<tr><td>G.655</td><td>NZ-DSF</td><td>Non-zero DSF; for DWDM</td></tr>
+<tr><td>G.656</td><td>Wide BW NZ-DSF</td><td>S+C+L band WDM</td></tr>
+<tr><td>G.657</td><td>Bend-insensitive</td><td>FTTH; min bend R=7.5mm</td></tr>
+</table>
+<div class="kv" style="margin-top:3px"><span class="k">SM fiber attenuation</span><span class="v">≤0.4 dB/km @ 1310nm</span></div>
+<div class="kv"><span class="k">SM fiber attenuation</span><span class="v">≤0.2 dB/km @ 1550nm</span></div>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>Dispersion Measurement & Mode Coupling</div><div class="cb">
+<p class="d"><strong>Dispersion Measurement Methods:</strong></p>
+<ul class="li">
+<li><strong>Pulse delay (time domain):</strong> Inject pulses at different λ; measure arrival time difference; D = Δτ/(L·Δλ)</li>
+<li><strong>Frequency domain:</strong> Measure baseband frequency response; FFT gives impulse response</li>
+<li><strong>Interferometric:</strong> Very low dispersion; phase comparison</li>
+</ul>
+<div class="kv" style="margin-top:4px"><span class="k">Mode coupling</span><span class="v">Random exchange of power between modes</span></div>
+<div class="kv"><span class="k">Effect on BW</span><span class="v">σ ∝ L^0.5 (coupled) vs L (uncoupled)</span></div>
+<div class="kv"><span class="k">Caused by</span><span class="v">Microbends, splices, imperfections</span></div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 5: CHAPTER 4 Part A — LED -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 4A — Optical Sources: Semiconductor Physics & LEDs</div><div class="pg">5/8</div></div>
+<div class="pb">
+
+<div class="card c1 s3"><div class="ch"><div class="d"></div>Semiconductor Physics Background</div><div class="cb">
+<div class="g3x">
+<div>
+<p class="d"><strong>Energy Bands:</strong></p>
+<ul class="li">
+<li><strong>Conduction band (CB):</strong> Electrons; above Fermi level</li>
+<li><strong>Valence band (VB):</strong> Holes; below Fermi level</li>
+<li><strong>Bandgap Eg:</strong> Forbidden region between CB and VB</li>
+<li><strong>Emitted photon:</strong> hν = Eg (wavelength λ = hc/Eg)</li>
+</ul>
+<div class="f" style="margin-top:4px">λ(µm) = 1.24/Eg(eV)</div>
+</div>
+<div>
+<p class="d"><strong>Emission Types:</strong></p>
+<ul class="li">
+<li><strong>Spontaneous:</strong> Random electron-hole recombination; incoherent; LED basis</li>
+<li><strong>Stimulated:</strong> Incident photon triggers recombination; coherent copy; laser basis</li>
+<li><strong>Absorption:</strong> Photon absorbed; electron jumps to CB</li>
+</ul>
+<div class="f o" style="margin-top:4px">Stimulated: hν_in → E₂ → E₁ + 2hν (coherent)</div>
+</div>
+<div>
+<p class="d"><strong>Direct vs Indirect Bandgap:</strong></p>
+<table class="t">
+<tr><th>Feature</th><th>Direct</th><th>Indirect</th></tr>
+<tr><td>k-vector</td><td>Same CB/VB</td><td>Different</td></tr>
+<tr><td>Recombination</td><td>Direct → photon</td><td>Phonon needed</td></tr>
+<tr><td>Efficiency</td><td>High (radiative)</td><td>Low (heat)</td></tr>
+<tr><td>Materials</td><td>GaAs,InP,GaAlAs</td><td>Si, Ge</td></tr>
+<tr><td>LED/Laser</td><td>✓ Used</td><td>✗ Not used</td></tr>
+</table>
+</div>
+</div>
+</div></div>
+
+<div class="card c2"><div class="ch"><div class="d"></div>Population Inversion & Recombination</div><div class="cb">
+<p class="d"><strong>Population Inversion:</strong> N₂ > N₁ (more electrons in excited state than ground state)</p>
+<ul class="li">
+<li>Normal: N₁ > N₂ (absorption dominates)</li>
+<li>Inversion: N₂ > N₁ (stimulated emission dominates) → optical gain</li>
+<li>Cannot achieve in 2-level system</li>
+<li>Need 3-level or 4-level pumping scheme</li>
+</ul>
+<p class="d" style="margin-top:4px"><strong>In Semiconductor:</strong> Forward bias injects carriers → fills CB → population inversion in active region above threshold current Ith</p>
+<div class="f" style="margin-top:4px">1/τ = 1/τᵣ + 1/τ_nr</div>
+<div class="f o">ηᵢ = τ/τᵣ = τ_nr/(τᵣ+τ_nr)</div>
+<div class="kv" style="margin-top:3px"><span class="k">τᵣ (radiative)</span><span class="v">~1–10 ns</span></div>
+<div class="kv"><span class="k">τ_nr (non-radiative)</span><span class="v">depends on defects</span></div>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>LED Structures & Materials</div><div class="cb">
+<p class="d"><strong>Surface Emitting LED (SLED/Burrus):</strong></p>
+<div class="cb2" style="font-size:8px"> Metal contact ──────────────
+ p-type layer  ──────────────
+ Active layer ← light emission (↓ or ↑)
+ n-type layer  ──────────────
+ Metal contact ────────────── </div>
+<ul class="li" style="margin-top:3px">
+<li>Large emitting area; simple/cheap; BW ≈ 100 MHz</li>
+<li>Coupled to large-core MM fiber (62.5/125 µm)</li>
+</ul>
+<p class="d" style="margin-top:3px"><strong>Edge Emitting LED (ELED):</strong></p>
+<div class="cb2" style="font-size:8px"> p-layer ─────────────────────────
+ Active (stripe geometry) ────────→ Light from cleaved edge
+ n-layer ─────────────────────────</div>
+<ul class="li" style="margin-top:3px">
+<li>Narrower beam; BW ≈ 400 MHz; higher radiance; better SM/small-core coupling</li>
+</ul>
+<p class="d" style="margin-top:3px"><strong>LED Materials:</strong></p>
+<div class="kv"><span class="k">GaAlAs/GaAs</span><span class="v">λ ≈ 800–900 nm (1st window)</span></div>
+<div class="kv"><span class="k">InGaAsP/InP</span><span class="v">λ ≈ 1300/1550 nm (2nd/3rd window)</span></div>
+</div></div>
+
+<div class="card c3"><div class="ch"><div class="d"></div>LED Characteristics & Figure of Merit</div><div class="cb">
+<p class="d"><strong>Double Heterostructure (DH):</strong> Narrow bandgap active layer sandwiched between wider bandgap layers; provides BOTH carrier AND optical confinement</p>
+<ul class="li">
+<li><strong>Carrier confinement:</strong> Potential well traps electrons/holes in active layer</li>
+<li><strong>Optical confinement:</strong> Higher n in active layer → waveguide effect</li>
+<li><strong>High radiance:</strong> DH + reflective back contact + current stripe</li>
+</ul>
+<div class="kv" style="margin-top:3px"><span class="k">Internal quantum eff. ηᵢ</span><span class="v">τ_nr/(τᵣ+τ_nr)</span></div>
+<div class="kv"><span class="k">External quantum eff. ηₑₓₜ</span><span class="v">ηᵢ × (1/n²) [Fresnel loss]</span></div>
+<div class="kv"><span class="k">Power eff. (wall plug)</span><span class="v">Pₒᵤₜ / (V·I)</span></div>
+<div class="f" style="margin-top:3px">Pᵢₙₜ = ηᵢ·(hc/λ)·(I/q)</div>
+</div></div>
+
+<div class="card c5"><div class="ch"><div class="d"></div>LED Modulation</div><div class="cb">
+<ul class="li">
+<li><strong>Direct modulation:</strong> Vary drive current directly; simple; limited BW</li>
+<li><strong>Modulation BW:</strong> f₃dB = 1/(2π·τ); τ = carrier lifetime</li>
+<li><strong>Max BW (SLED):</strong> ~100–200 MHz</li>
+<li><strong>Max BW (ELED):</strong> ~300–500 MHz</li>
+<li><strong>Small signal BW:</strong> Determined by τ = 1/(1/τᵣ + 1/τ_nr)</li>
+</ul>
+<div class="f" style="margin-top:4px">f₃dB = √3 / (2π·τ)</div>
+<div class="kv" style="margin-top:3px"><span class="k">Spectral width (LED)</span><span class="v">Δλ ≈ 30–60 nm (FWHM)</span></div>
+<div class="kv"><span class="k">Output power vs I</span><span class="v">Linear (no threshold)</span></div>
+<div class="kv"><span class="k">Temperature effect</span><span class="v">Power decreases as T increases (minor)</span></div>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>LED Numerical</div><div class="cb">
+<p class="d">Given: τᵣ=50ns, τ_nr=100ns, I=35mA, λ=0.87µm</p>
+<div class="kv"><span class="k">1/τ=1/τᵣ+1/τ_nr</span><span class="v">1/50+1/100=3/100 → τ=33.3ns</span></div>
+<div class="kv"><span class="k">ηᵢ = τ/τᵣ</span><span class="v">33.3/50 = 0.667 (66.7%)</span></div>
+<div class="kv"><span class="k">E = hc/λ</span><span class="v">6.626e-34×3e8/0.87e-6 = 2.286e-19 J</span></div>
+<div class="kv"><span class="k">E in eV</span><span class="v">2.286e-19/1.6e-19 = 1.428 eV</span></div>
+<div class="kv"><span class="k">I/q (carriers/s)</span><span class="v">35e-3/1.6e-19 = 2.19×10¹⁷</span></div>
+<div class="kv"><span class="k">Pᵢₙₜ = ηᵢ×E×(I/q)</span><span class="v">0.667×2.286e-19×2.19e17≈33.4mW</span></div>
+<div class="kv"><span class="k">f₃dB = √3/(2πτ)</span><span class="v">√3/(2π×33.3e-9) ≈ 8.3 MHz</span></div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 6: CHAPTER 4 Part B — Laser Diodes -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 4B — Laser Diodes: Structures, Modes & Modulation</div><div class="pg">6/8</div></div>
+<div class="pb">
+
+<div class="card c2 s2"><div class="ch"><div class="d"></div>Laser Diode — Modes, Threshold & Rate Equations</div><div class="cb">
+<div class="g2x">
+<div>
+<p class="d"><strong>Threshold Conditions for Lasing:</strong></p>
+<ul class="li">
+<li><strong>Gain ≥ Loss:</strong> Optical gain must exceed all cavity losses (absorption, scatter, transmission)</li>
+<li><strong>Phase condition:</strong> Round-trip phase = 2πm (m = integer) → standing wave modes</li>
+<li><strong>Threshold current Ith:</strong> Minimum current for lasing; above Ith output increases sharply</li>
+</ul>
+<div class="f" style="margin-top:4px">Threshold gain: g_th = α_int + (1/2L)·ln(1/R₁R₂)</div>
+<div class="kv"><span class="k">R₁, R₂</span><span class="v">Facet reflectivities (~30% cleaved)</span></div>
+<div class="kv"><span class="k">α_int</span><span class="v">Internal loss (absorption, scatter)</span></div>
+<div class="kv"><span class="k">Typical Ith</span><span class="v">5–50 mA (DH laser)</span></div>
+</div>
+<div>
+<p class="d"><strong>Rate Equations (Diode):</strong></p>
+<div class="f">dN/dt = J/(qd) − N/τ − vg·g·S</div>
+<div class="f o">dS/dt = Γ·vg·g·S − S/τp + Γ·Rsp</div>
+<div class="kv" style="margin-top:3px"><span class="k">N</span><span class="v">Carrier density</span></div>
+<div class="kv"><span class="k">S</span><span class="v">Photon density</span></div>
+<div class="kv"><span class="k">J</span><span class="v">Injection current density</span></div>
+<div class="kv"><span class="k">τ, τp</span><span class="v">Carrier & photon lifetime</span></div>
+<div class="kv"><span class="k">Γ</span><span class="v">Optical confinement factor</span></div>
+<div class="kv"><span class="k">vg</span><span class="v">Group velocity</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c1"><div class="ch"><div class="d"></div>Resonant Frequencies & Longitudinal Modes</div><div class="cb">
+<p class="d"><strong>Fabry-Perot Resonator:</strong> Active region (length L) with cleaved facets as mirrors. Standing wave modes:</p>
+<div class="f">λₘ = 2·n_eff·L / m  (m = integer)</div>
+<div class="f o">Mode spacing: Δλ = λ²/(2·n_g·L)</div>
+<div class="kv" style="margin-top:3px"><span class="k">Typical L</span><span class="v">200–500 µm</span></div>
+<div class="kv"><span class="k">Mode spacing Δλ</span><span class="v">~0.3–1 nm for FP laser</span></div>
+<div class="kv"><span class="k">FP laser modes</span><span class="v">Multiple longitudinal modes (multimode)</span></div>
+<div class="kv"><span class="k">Relaxation osc. freq.</span><span class="v">fᵣ = (1/2π)√(Γvg·dg/dN·(J−Jth)/qτp)</span></div>
+<div class="nt" style="margin-top:3px">Relaxation oscillations appear as damped ringing in modulated output</div>
+</div></div>
+
+<div class="card c4"><div class="ch"><div class="d"></div>Laser Diode Structures</div><div class="cb">
+<table class="t">
+<tr><th>Type</th><th>Structure</th><th>Modes</th><th>Linewidth</th><th>Use</th></tr>
+<tr><td>FP Laser</td><td>Cleaved facet mirrors</td><td>Multi-longit.</td><td>1–3 nm</td><td>Short haul</td></tr>
+<tr><td>DFB Laser</td><td>Grating in active layer</td><td>Single longit.</td><td>&lt;0.1 nm</td><td>DWDM, long haul</td></tr>
+<tr><td>DBR Laser</td><td>Grating outside active</td><td>Single</td><td>&lt;0.1 nm</td><td>Tunable WDM</td></tr>
+<tr><td>VCSEL</td><td>Vertical cavity, surface emit</td><td>Single or few</td><td>~0.1 nm</td><td>LAN, datacom</td></tr>
+<tr><td>MQW Laser</td><td>Multi quantum well active</td><td>Single</td><td>Narrow</td><td>High speed</td></tr>
+</table>
+<p class="d" style="margin-top:4px"><strong>DFB Bragg Condition:</strong></p>
+<div class="f">λ_Bragg = 2·n_eff·Λ  (Λ = grating pitch)</div>
+<div class="kv"><span class="k">VCSEL advantage</span><span class="v">Low threshold, wafer-level testing, 2D arrays</span></div>
+</div></div>
+
+<div class="card c3"><div class="ch"><div class="d"></div>Laser Modulation & Spectral Width</div><div class="cb">
+<p class="d"><strong>Direct Modulation:</strong> Vary bias current above/below threshold; simple; chirp problem at high rates</p>
+<p class="d"><strong>External Modulation:</strong> DC-biased laser + external modulator (MZI or EAM); no chirp; used for &gt;2.5 Gbps</p>
+<div class="kv" style="margin-top:3px"><span class="k">Small-signal BW</span><span class="v">~fᵣ (relaxation oscillation freq.)</span></div>
+<div class="kv"><span class="k">Direct mod. limit</span><span class="v">~10–30 Gbps for DFB</span></div>
+<div class="kv"><span class="k">Chirp Δν</span><span class="v">Frequency shift during modulation; limits reach</span></div>
+<div class="kv"><span class="k">Spectral width (FP)</span><span class="v">1–3 nm (multimode)</span></div>
+<div class="kv"><span class="k">Spectral width (DFB)</span><span class="v">&lt;0.1 nm; with isolation: &lt;0.01 nm</span></div>
+<p class="d" style="margin-top:4px"><strong>Temperature Effects:</strong></p>
+<ul class="li">
+<li>Ith increases with temperature (Ith ∝ exp(T/T₀))</li>
+<li>Output power drops; wavelength shifts ~0.1nm/°C</li>
+<li>TEC (thermoelectric cooler) and thermistor used for stabilization</li>
+<li>T₀ (char. temp.) = 50–70 K for InGaAsP; ~120 K for GaAlAs</li>
+</ul>
+</div></div>
+
+<div class="card c5 s2"><div class="ch"><div class="d"></div>LED vs Laser Complete Comparison</div><div class="cb">
+<table class="t">
+<tr><th>Parameter</th><th>LED (SLED)</th><th>LED (ELED)</th><th>FP Laser</th><th>DFB Laser</th></tr>
+<tr><td>Emission</td><td>Spontaneous</td><td>Spontaneous</td><td>Stimulated</td><td>Stimulated</td></tr>
+<tr><td>Coherence</td><td>Incoherent</td><td>Incoherent</td><td>Coherent</td><td>Highly coherent</td></tr>
+<tr><td>Spectral Δλ</td><td>40–60 nm</td><td>30–50 nm</td><td>1–3 nm</td><td>&lt;0.1 nm</td></tr>
+<tr><td>Output power</td><td>−20 to −30dBm</td><td>−10 to −20dBm</td><td>0 to −5 dBm</td><td>+3 to +5 dBm</td></tr>
+<tr><td>Modulation BW</td><td>~100 MHz</td><td>~400 MHz</td><td>~1 GHz</td><td>~10 GHz</td></tr>
+<tr><td>Threshold</td><td>None</td><td>None</td><td>Ith ~20mA</td><td>Ith ~10mA</td></tr>
+<tr><td>Linearity</td><td>More linear</td><td>Linear</td><td>Less linear</td><td>Less linear</td></tr>
+<tr><td>Temperature</td><td>Less sensitive</td><td>Less sensitive</td><td>Sensitive</td><td>Very sensitive; TEC needed</td></tr>
+<tr><td>Fiber type</td><td>MM only</td><td>SM or MM</td><td>SM or MM</td><td>SM only</td></tr>
+<tr><td>Cost</td><td>Very low</td><td>Low</td><td>Medium</td><td>High</td></tr>
+<tr><td>Use case</td><td>LAN, sensors</td><td>Medium links</td><td>Metro links</td><td>DWDM, long haul</td></tr>
+</table>
+</div></div>
+
+<div class="card c8"><div class="ch"><div class="d"></div>Light Source Linearity & Key Formulas</div><div class="cb">
+<ul class="li">
+<li><strong>LED linearity:</strong> P ∝ I (approximately); non-linearity from high injection; suitable for analog modulation</li>
+<li><strong>Laser linearity:</strong> P ∝ (I−Ith) above threshold; non-linearity from gain saturation; clipping distortion</li>
+<li><strong>Pre-distortion:</strong> Applied to drive signal to compensate non-linearity</li>
+</ul>
+<div class="f" style="margin-top:4px">P_laser = η_d · (hν/q) · (I−Ith)  [above threshold]</div>
+<div class="f o">Slope efficiency: SE = dP/dI = η_d·hν/q (W/A)</div>
+<div class="kv" style="margin-top:3px"><span class="k">Typical SE</span><span class="v">0.1–0.3 mW/mA for DFB</span></div>
+<div class="kv"><span class="k">λ(µm) material</span><span class="v">GaAs: 0.87µm | InGaAsP: 1.3/1.55µm</span></div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 7: CHAPTERS 5 & 6 -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapters 5 & 6 — Transmission Systems & Optical Amplifiers</div><div class="pg">7/8</div></div>
+<div class="pb">
+
+<div class="dv"><span>Chapter 5 — Transmission Systems</span></div>
+
+<div class="card c1 s3"><div class="ch"><div class="d"></div>Link Power Budget — Model & Calculation</div><div class="cb">
+<div class="g3x">
+<div>
+<div class="cb2" style="font-size:8px">TX[Pt] → [Connector Lc] → [Fiber αf·L]
+     → [N_s Splices Ls each] → [Connector Lc] → RX[Pr]
+
+Available Power = Pt − Ps  (dB)
+Total Loss = αf·L + Nc·Lc + Ns·Ls + System Margin
+Power Margin = Available Power − Total Loss
+SYSTEM FEASIBLE if Margin ≥ 0 dB</div>
+<div class="kv" style="margin-top:4px"><span class="k">Fiber loss αf</span><span class="v">0.2–0.5 dB/km</span></div>
+<div class="kv"><span class="k">Connector loss Lc</span><span class="v">0.5–1.5 dB each</span></div>
+<div class="kv"><span class="k">Fusion splice Ls</span><span class="v">0.1–0.3 dB each</span></div>
+<div class="kv"><span class="k">System margin</span><span class="v">6–8 dB (safety buffer)</span></div>
+</div>
+<div>
+<p class="d"><strong>Typical Source/Detector Power:</strong></p>
+<table class="t">
+<tr><th>Component</th><th>Power</th></tr>
+<tr><td>LED (Pt)</td><td>−10 to −30 dBm</td></tr>
+<tr><td>FP Laser (Pt)</td><td>−5 to 0 dBm</td></tr>
+<tr><td>DFB Laser (Pt)</td><td>0 to +5 dBm</td></tr>
+<tr><td>PIN receiver (Ps)</td><td>−30 to −38 dBm</td></tr>
+<tr><td>APD receiver (Ps)</td><td>−40 to −50 dBm</td></tr>
+</table>
+</div>
+<div>
+<p class="d"><strong>Worked Example:</strong></p>
+<p class="d">Pt=+1dBm, Ps=−38dBm, L=45km, αf=0.4dB/km, 2 connectors×1dB, 9 splices×0.3dB, margin=6dB</p>
+<div class="kv"><span class="k">Available power</span><span class="v">1−(−38) = 39 dB</span></div>
+<div class="kv"><span class="k">Fiber loss</span><span class="v">0.4×45 = 18 dB</span></div>
+<div class="kv"><span class="k">Connector loss</span><span class="v">1×2 = 2 dB</span></div>
+<div class="kv"><span class="k">Splice loss</span><span class="v">0.3×9 = 2.7 dB</span></div>
+<div class="kv"><span class="k">Total loss</span><span class="v">18+2+2.7+6 = 28.7 dB</span></div>
+<div class="kv"><span class="k">Power margin</span><span class="v">39−28.7 = +10.3 dB ✓ Feasible</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c5 s2"><div class="ch"><div class="d"></div>Rise Time Budget & BER</div><div class="cb">
+<div class="g2x">
+<div>
+<p class="d"><strong>Rise Time Budget:</strong> Checks if system can support required bit rate</p>
+<div class="f">t_sys = √(t_tx² + t_fiber² + t_rx²)</div>
+<div class="f o">NRZ: t_sys ≤ 0.7 / Bit_Rate</div>
+<div class="f g">RZ: t_sys ≤ 0.35 / Bit_Rate</div>
+<ul class="li" style="margin-top:4px">
+<li><strong>t_tx:</strong> Transmitter rise time (source + driver)</li>
+<li><strong>t_fiber:</strong> Modal + chromatic dispersion combined</li>
+<li><strong>t_rx:</strong> Receiver bandwidth = 0.35/BW_rx</li>
+</ul>
+<div class="kv" style="margin-top:3px"><span class="k">Modal BW (MM-GI)</span><span class="v">t_modal ≈ 0.44/BW_fiber</span></div>
+<div class="kv"><span class="k">Chromatic</span><span class="v">t_chrom = |D|·Δλ·L</span></div>
+</div>
+<div>
+<p class="d"><strong>BER (Bit Error Rate):</strong></p>
+<div class="f">BER = (1/2)·erfc(Q/√2)</div>
+<div class="kv" style="margin-top:3px"><span class="k">Q factor</span><span class="v">Q = (I₁−I₀)/(σ₁+σ₀)</span></div>
+<div class="kv"><span class="k">Q = 6</span><span class="v">BER ≈ 10⁻⁹</span></div>
+<div class="kv"><span class="k">Q = 7</span><span class="v">BER ≈ 10⁻¹²</span></div>
+<div class="kv"><span class="k">Telecom standard</span><span class="v">BER ≤ 10⁻⁹</span></div>
+<div class="kv"><span class="k">I₁, I₀</span><span class="v">Mean currents for bit 1, 0</span></div>
+<div class="kv"><span class="k">σ₁, σ₀</span><span class="v">Noise RMS for bit 1, 0</span></div>
+<p class="d" style="margin-top:4px"><strong>Receiver Sensitivity:</strong> Minimum input power to achieve target BER</p>
+<div class="f p">P_min = (hν/η)·(Q²·F·BW/2)</div>
+</div>
+</div>
+</div></div>
+
+<div class="card c7"><div class="ch"><div class="d"></div>System Design Considerations</div><div class="cb">
+<ul class="li">
+<li><strong>Dispersion limit:</strong> Max distance set by dispersion: L_disp = 1/(D·Δλ·B)</li>
+<li><strong>Attenuation limit:</strong> Max distance set by loss: L_att = (Pt−Ps−penalties)/αf</li>
+<li><strong>Ruling limit:</strong> Min(L_disp, L_att) determines reach</li>
+<li><strong>Power penalty:</strong> Extra power needed due to dispersion, reflections, modal noise</li>
+<li><strong>ORL:</strong> Optical return loss; back-reflections from connectors degrade laser stability</li>
+</ul>
+</div></div>
+
+<div class="dv"><span>Chapter 6 — Optical Amplifiers</span></div>
+
+<div class="card c4 s2"><div class="ch"><div class="d"></div>EDFA — Architecture & Mechanism</div><div class="cb">
+<div class="g2x">
+<div>
+<div class="cb2" style="font-size:8px">Signal(1550nm) ──[WDM Coupler]──[Er³⁺ Fiber 10–50m]──[Isolator]── Amp. signal
+                       ↑
+                  Pump Laser (980nm or 1480nm)</div>
+<p class="d" style="margin-top:4px"><strong>Energy Level Mechanism:</strong></p>
+<ul class="li">
+<li><strong>980nm pump:</strong> Er³⁺ E₁→E₃ (excited); fast non-rad decay E₃→E₂</li>
+<li><strong>E₂ (metastable):</strong> Long lifetime ~10 ms; population inversion builds</li>
+<li><strong>Signal triggers:</strong> Stimulated emission E₂→E₁; 1530–1565nm amplified</li>
+<li><strong>Isolators:</strong> Prevent ASE feedback and back-reflections</li>
+<li><strong>GFF:</strong> Gain flattening filter for uniform gain across bandwidth</li>
+</ul>
+</div>
+<div>
+<table class="t">
+<tr><th>Parameter</th><th>980nm pump</th><th>1480nm pump</th></tr>
+<tr><td>Noise figure</td><td>3–4 dB (low) ✓</td><td>4–6 dB</td></tr>
+<tr><td>Gain</td><td>20–40 dB</td><td>20–35 dB</td></tr>
+<tr><td>Bandwidth</td><td>~35 nm</td><td>~30 nm</td></tr>
+<tr><td>Pump efficiency</td><td>High</td><td>Higher</td></tr>
+</table>
+<div class="kv" style="margin-top:4px"><span class="k">C-band coverage</span><span class="v">1530–1565 nm</span></div>
+<div class="kv"><span class="k">L-band EDFA</span><span class="v">1570–1610 nm (longer Er fiber)</span></div>
+<div class="kv"><span class="k">Applications</span><span class="v">Power booster / In-line / Pre-amp</span></div>
+<div class="kv"><span class="k">ASE noise</span><span class="v">Main noise source; NF ≥ 3dB (quantum)</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c2"><div class="ch"><div class="d"></div>SOA — Semiconductor Optical Amplifier</div><div class="cb">
+<div class="cb2" style="font-size:8px"> AR coat.  p-cladding  AR coat.
+Signal → ──────────────────────────── → Amp. output
+          Active layer (gain medium)
+          n-cladding
+          ↑ Forward bias current</div>
+<ul class="li" style="margin-top:4px">
+<li>Laser below threshold; AR coatings prevent lasing</li>
+<li>Forward bias → population inversion → optical gain</li>
+<li><strong>Gain BW:</strong> ~80–100 nm (wider than EDFA)</li>
+<li><strong>Fast dynamics:</strong> ~1 ps → optical switching, wavelength conversion</li>
+</ul>
+<div class="kv" style="margin-top:3px"><span class="k">Advantage</span><span class="v">Compact, integrable, wide BW, fast</span></div>
+<div class="kv"><span class="k">Disadvantage</span><span class="v">Polarization sensitive; XGM crosstalk; higher noise</span></div>
+</div></div>
+
+<div class="card c3"><div class="ch"><div class="d"></div>Raman Amplifier</div><div class="cb">
+<p class="d">Based on <strong>Stimulated Raman Scattering (SRS)</strong> — nonlinear process in silica fiber</p>
+<div class="f">Stokes shift: ~13.2 THz (~100nm); pump@1450nm→amplifies@1550nm</div>
+<div class="g2x" style="margin-top:4px">
+<div>
+<p class="d"><strong>Forward pump:</strong> Pump and signal co-propagate; better SNR at input; more noise transfer</p>
+<p class="d"><strong>Backward pump:</strong> Pump counter-propagates; lower NF; uniform gain ✓ preferred</p>
+<p class="d"><strong>Bidirectional:</strong> Both pumps; maximum gain + uniformity</p>
+</div>
+<div>
+<div class="kv"><span class="k">Pump power needed</span><span class="v">Hundreds of mW</span></div>
+<div class="kv"><span class="k">Gain type</span><span class="v">Distributed (in transmission fiber)</span></div>
+<div class="kv"><span class="k">S-band coverage</span><span class="v">1480–1530nm (EDFA can't)</span></div>
+<div class="kv"><span class="k">Advantage</span><span class="v">Any λ amplified by tuning pump λ</span></div>
+<div class="kv"><span class="k">Disadvantage</span><span class="v">XGM crosstalk; high pump power</span></div>
+</div>
+</div>
+</div></div>
+
+</div></div>
+
+<!-- PAGE 8: CHAPTER 7 + MASTER QUICK REFERENCE -->
+<div class="page">
+<div class="ph"><div class="ti">Fiber Optic Communication</div><div class="co">GTU 3161005</div><div class="cp">Chapter 7 — Advances in OFC + Master Quick Reference</div><div class="pg">8/8</div></div>
+<div class="pb">
+
+<div class="card c1 s2"><div class="ch"><div class="d"></div>WDM, DWDM Principles & MZI Multiplexer</div><div class="cb">
+<div class="g2x">
+<div>
+<table class="t">
+<tr><th>Feature</th><th>CWDM</th><th>DWDM</th></tr>
+<tr><td>Channel spacing</td><td>20 nm</td><td>0.8nm/100GHz</td></tr>
+<tr><td>Channels</td><td>4–18</td><td>40–160+</td></tr>
+<tr><td>Wavelength range</td><td>1270–1610nm</td><td>C+L band</td></tr>
+<tr><td>Amplifier</td><td>Not needed</td><td>EDFA required</td></tr>
+<tr><td>Application</td><td>Metro, access</td><td>Long-haul backbone</td></tr>
+<tr><td>Cost</td><td>Lower</td><td>Higher</td></tr>
+<tr><td>Laser</td><td>Uncooled, wide λ</td><td>Cooled DFB, narrow λ</td></tr>
+</table>
+<div class="kv" style="margin-top:4px"><span class="k">ITU DWDM grid</span><span class="v">100GHz spacing; ref. 193.1THz</span></div>
+<div class="kv"><span class="k">Channel capacity</span><span class="v">Total = N × bit_rate_per_channel</span></div>
+<div class="kv"><span class="k">OADM</span><span class="v">Add/Drop one λ at node without O/E/O</span></div>
+</div>
+<div>
+<p class="d"><strong>Mach-Zehnder Interferometer (MZI) MUX:</strong></p>
+<div class="cb2" style="font-size:8px">Input ──[3dB splitter]──Path1(L₁)──[3dB combiner]── Port 1 (constructive)
+                   └──Path2(L₂)──┘              Port 2 (destructive)
+ΔL = L₁−L₂ (path difference)</div>
+<ul class="li" style="margin-top:3px">
+<li>50:50 splitter divides input; arms have deliberate ΔL</li>
+<li><strong>Constructive:</strong> λ where n_eff·ΔL = m·λ → exits port 1</li>
+<li><strong>Destructive:</strong> Other λ → exits port 2</li>
+<li>Cascaded MZI tree → multi-channel DEMUX on PLC chip</li>
+</ul>
+<div class="f" style="margin-top:3px">Bragg: ΔL = m·λ/n_eff</div>
+<div class="kv"><span class="k">PLC realization</span><span class="v">Silicon-on-insulator; compact; temp-stabilized</span></div>
+</div>
+</div>
+</div></div>
+
+<div class="card c5"><div class="ch"><div class="d"></div>SONET / SDH</div><div class="cb">
+<div class="kv"><span class="k">SONET standard</span><span class="v">ANSI (USA)</span></div>
+<div class="kv"><span class="k">SDH standard</span><span class="v">ITU-T (international)</span></div>
+<div class="kv"><span class="k">SONET frame</span><span class="v">90×9=810 bytes; 125µs (8kHz)</span></div>
+<div class="kv"><span class="k">First 3 cols</span><span class="v">Transport Overhead (TOH)</span></div>
+<div class="kv"><span class="k">Remaining 87 cols</span><span class="v">Synchronous Payload Env. (SPE)</span></div>
+<table class="t" style="margin-top:4px">
+<tr><th>Level</th><th>SONET</th><th>SDH</th><th>Rate</th></tr>
+<tr><td>OC-1</td><td>STS-1</td><td>—</td><td>51.84 Mbps</td></tr>
+<tr><td>OC-3</td><td>STS-3</td><td>STM-1</td><td>155.52 Mbps</td></tr>
+<tr><td>OC-12</td><td>STS-12</td><td>STM-4</td><td>622.08 Mbps</td></tr>
+<tr><td>OC-48</td><td>STS-48</td><td>STM-16</td><td>2.488 Gbps</td></tr>
+<tr><td>OC-192</td><td>STS-192</td><td>STM-64</td><td>9.953 Gbps</td></tr>
+<tr><td>OC-768</td><td>STS-768</td><td>STM-256</td><td>39.81 Gbps</td></tr>
+</table>
+<div class="kv" style="margin-top:3px"><span class="k">Self-healing ring</span><span class="v">Reroutes in &lt;50 ms on fiber cut</span></div>
+<div class="kv"><span class="k">ADM</span><span class="v">Add-Drop Multiplexer; no full demux</span></div>
+</div></div>
+
+<div class="card c6"><div class="ch"><div class="d"></div>Optical Switching & Broadband</div><div class="cb">
+<p class="d"><strong>Optical Switching Technologies:</strong></p>
+<table class="t">
+<tr><th>Type</th><th>Mechanism</th><th>Speed</th><th>Use</th></tr>
+<tr><td>MEMS</td><td>Micro-mirror arrays</td><td>ms</td><td>Large port OXC</td></tr>
+<tr><td>SOA-based</td><td>Gain switching</td><td>ns</td><td>Burst switching</td></tr>
+<tr><td>Thermo-optic</td><td>Δn via heating</td><td>ms</td><td>PLC switches</td></tr>
+<tr><td>Electro-optic</td><td>Pockels effect</td><td>ps</td><td>High speed</td></tr>
+<tr><td>Acousto-optic</td><td>Sound-induced Δn</td><td>µs</td><td>Tunable filter</td></tr>
+</table>
+<p class="d" style="margin-top:4px"><strong>Analog vs Digital Broadband:</strong></p>
+<ul class="li">
+<li><strong>Analog:</strong> AM/FM CATV; direct modulation; SNR critical; used in HFC networks</li>
+<li><strong>Digital:</strong> SONET/SDH, Ethernet, IP; immune to noise; scalable</li>
+<li><strong>FTTH/PON:</strong> GPON/EPON; passive splitters; 32–128 homes per fiber</li>
+</ul>
+</div></div>
+
+<!-- MASTER REFERENCE -->
+<div class="dv"><span>Master Quick Reference — All Formulas & Constants</span></div>
+
+<div class="card c1 s3"><div class="ch"><div class="d"></div>Complete Formula Sheet</div><div class="cb">
+<div class="g3x">
+<div>
+<p style="font-size:9.5px;color:var(--a1);font-weight:700;margin-bottom:3px">CH1 — Basic</p>
+<div class="f">f = c/λ | c = 3×10⁸ m/s</div>
+<div class="f o">E = hc/λ | h = 6.626×10⁻³⁴ J·s</div>
+<div class="f g">E(eV) = 1.24/λ(µm)</div>
+<div class="f y">α(dB/km) = (10/L)·log₁₀(Pᵢₙ/Pₒᵤₜ)</div>
+<div class="f p">Pₒᵤₜ = Pᵢₙ·10^(−αL/10)</div>
+<p style="font-size:9.5px;color:var(--a2);font-weight:700;margin:5px 0 3px">CH2 — Fiber</p>
+<div class="f">sin θc = n₂/n₁</div>
+<div class="f o">NA = √(n₁²−n₂²) = n₁√(2Δ)</div>
+<div class="f g">V = (2πa/λ)·NA = (πd/λ)·NA</div>
+<div class="f">M_SI = V²/2 | M_GI = V²/4</div>
+<div class="f p">Δ = (n₁−n₂)/n₁</div>
+<div class="f y">Cutoff λc = 2πa·NA/2.405</div>
+</div>
+<div>
+<p style="font-size:9.5px;color:var(--a4);font-weight:700;margin-bottom:3px">CH3 — Degradation</p>
+<div class="f">δT_SI = n₁·L·Δ/c</div>
+<div class="f o">σ_rms = δT/(2√3)</div>
+<div class="f g">δT_GI = n₁·L·Δ²/(2c) [α=2]</div>
+<div class="f">σₘ = |Dₘ|·Δλ·L [material]</div>
+<div class="f p">D = Dₘ + Dw [chromatic, ps/nm·km]</div>
+<div class="f y">Rayleigh loss ∝ 1/λ⁴</div>
+<p style="font-size:9.5px;color:var(--a5);font-weight:700;margin:5px 0 3px">CH4 — Sources</p>
+<div class="f">λ(µm) = 1.24/Eg(eV)</div>
+<div class="f o">1/τ = 1/τᵣ + 1/τ_nr</div>
+<div class="f g">ηᵢ = τ/τᵣ = τ_nr/(τᵣ+τ_nr)</div>
+<div class="f">Pᵢₙₜ = ηᵢ·(hc/λ)·(I/q)</div>
+<div class="f p">f₃dB = √3/(2π·τ) [LED BW]</div>
+</div>
+<div>
+<p style="font-size:9.5px;color:var(--a6);font-weight:700;margin-bottom:3px">CH5 — Transmission</p>
+<div class="f">PM = (Pt−Ps) − (αfL+NcLc+NsLs+M)</div>
+<div class="f o">t_sys = √(t_tx²+t_fiber²+t_rx²)</div>
+<div class="f g">NRZ: t_sys ≤ 0.7/BR | RZ: ≤ 0.35/BR</div>
+<div class="f">BER = ½·erfc(Q/√2)</div>
+<div class="f p">Q=6 → BER≈10⁻⁹</div>
+<p style="font-size:9.5px;color:var(--a7);font-weight:700;margin:5px 0 3px">CH6 — Amplifiers</p>
+<div class="f">EDFA gain: 20–40 dB; NF: 3–6 dB</div>
+<div class="f o">Raman Stokes: ~13.2 THz ≈ 100nm</div>
+<div class="f g">DFB: λ_B = 2·n_eff·Λ</div>
+<div class="f">MZI: ΔL = m·λ/n_eff</div>
+<div class="f p">SONET OC-N rate = N×51.84 Mbps</div>
+</div>
+</div>
+</div></div>
+
+<div class="card c4 s2"><div class="ch"><div class="d"></div>Key Constants, Values & Acronyms</div><div class="cb">
+<div class="g2x">
+<div>
+<p style="font-size:9.5px;color:var(--a4);font-weight:700;margin-bottom:3px">Physical Constants</p>
+<div class="kv"><span class="k">Speed of light c</span><span class="v">3×10⁸ m/s</span></div>
+<div class="kv"><span class="k">Planck constant h</span><span class="v">6.626×10⁻³⁴ J·s</span></div>
+<div class="kv"><span class="k">Electron charge q</span><span class="v">1.6×10⁻¹⁹ C</span></div>
+<div class="kv"><span class="k">1 eV</span><span class="v">1.6×10⁻¹⁹ J</span></div>
+<p style="font-size:9.5px;color:var(--a5);font-weight:700;margin:5px 0 3px">Important Values</p>
+<div class="kv"><span class="k">Silica n_core</span><span class="v">~1.48–1.50</span></div>
+<div class="kv"><span class="k">SM V cutoff</span><span class="v">2.405</span></div>
+<div class="kv"><span class="k">Min attenuation</span><span class="v">0.2 dB/km @ 1550nm</span></div>
+<div class="kv"><span class="k">SONET frame rate</span><span class="v">8000 frames/sec (125µs)</span></div>
+<div class="kv"><span class="k">EDFA gain BW</span><span class="v">~35nm (C-band)</span></div>
+<div class="kv"><span class="k">Raman Stokes shift</span><span class="v">13.2 THz (~100nm in silica)</span></div>
+<div class="kv"><span class="k">BER target (telecom)</span><span class="v">10⁻⁹ (Q ≈ 6)</span></div>
+<div class="kv"><span class="k">SM MFD</span><span class="v">9–10 µm @ 1310nm</span></div>
+</div>
+<div>
+<p style="font-size:9.5px;color:var(--a3);font-weight:700;margin-bottom:3px">Acronyms</p>
+<div class="kv"><span class="k">WDM</span><span class="v">Wavelength Division Multiplexing</span></div>
+<div class="kv"><span class="k">DWDM</span><span class="v">Dense Wavelength Division Multiplexing</span></div>
+<div class="kv"><span class="k">EDFA</span><span class="v">Erbium-Doped Fiber Amplifier</span></div>
+<div class="kv"><span class="k">SOA</span><span class="v">Semiconductor Optical Amplifier</span></div>
+<div class="kv"><span class="k">SONET</span><span class="v">Synchronous Optical NETwork</span></div>
+<div class="kv"><span class="k">SDH</span><span class="v">Synchronous Digital Hierarchy</span></div>
+<div class="kv"><span class="k">LAN</span><span class="v">Local Area Network</span></div>
+<div class="kv"><span class="k">RAPD</span><span class="v">Reach-through Avalanche PhotoDiode</span></div>
+<div class="kv"><span class="k">TIR</span><span class="v">Total Internal Reflection</span></div>
+<div class="kv"><span class="k">NA</span><span class="v">Numerical Aperture</span></div>
+<div class="kv"><span class="k">DFB</span><span class="v">Distributed FeedBack laser</span></div>
+<div class="kv"><span class="k">PMD</span><span class="v">Polarization Mode Dispersion</span></div>
+<div class="kv"><span class="k">ISI</span><span class="v">Intersymbol Interference</span></div>
+<div class="kv"><span class="k">MCVD</span><span class="v">Modified Chemical Vapour Deposition</span></div>
+<div class="kv"><span class="k">FEC</span><span class="v">Forward Error Correction</span></div>
+<div class="kv"><span class="k">VCSEL</span><span class="v">Vertical Cavity Surface Emitting Laser</span></div>
+<div class="kv"><span class="k">OADM</span><span class="v">Optical Add-Drop Multiplexer</span></div>
+<div class="kv"><span class="k">OXC</span><span class="v">Optical Cross-Connect</span></div>
+</div>
+</div>
+</div></div>
+
+</div></div>
+
+</body></html>
